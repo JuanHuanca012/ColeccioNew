@@ -1,0 +1,281 @@
+/* ProfilePage.css - Actualizado */
+
+:root {
+  /* --- PALETA DE COLORES --- */
+  --primary: #2e8b57;       
+  --primary-dark: #257147;  
+  --primary-light: #e8f5e9; 
+  --bg-body: #f5f7f6;       
+  --text-main: #2c3e50;
+  --text-muted: #6f7b87;
+  --white: #ffffff;
+  --danger: #e74c3c;
+  --warning-bg: #fff3cd;
+  
+  --radius: 14px;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.profile-wrapper {
+  min-height: 100vh; /* Que ocupe al menos toda la pantalla */
+  background-color: var(--bg-body);
+  font-family: 'Poppins', sans-serif;
+  padding: 40px; /* Padding base */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineado arriba */
+}
+
+/* --- CONTENEDOR PRINCIPAL (ESTILO DASHBOARD) --- */
+.dashboard-container2 {
+  width: 90%;
+  max-width: 1800px;  /* Gigante */
+  min-width: 1250px;  /* Base PC */
+  display: grid;
+  grid-template-columns: 350px 1fr; /* Columna izq fija (350px), derecha flexible */
+  gap: 30px;
+  transition: min-width 0.3s ease;
+}
+
+/* --- TARJETA IZQUIERDA (Perfil) --- */
+.profile-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  height: fit-content;
+  text-align: center;
+  position: sticky; /* Truco: Se queda fija al hacer scroll si hay espacio */
+  top: 20px; 
+}
+
+.banner {
+  height: 130px;
+  background: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
+}
+
+.avatar-section {
+  margin-top: -65px;
+  display: flex;
+  justify-content: center;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  background: var(--white);
+  border-radius: 50%;
+  border: 6px solid var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.user-meta {
+  padding: 1.5rem 2rem 2.5rem;
+}
+
+.user-name { margin: 0.8rem 0 0; font-size: 1.6rem; font-weight: 700; color: var(--text-main); }
+.user-email { margin: 5px 0 0; color: var(--text-muted); font-size: 1rem; }
+.user-badge {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 6px 14px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --- SECCIÓN DERECHA --- */
+.content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Stats Row */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-4px); }
+
+.stat-number { font-size: 2.2rem; font-weight: 800; color: var(--primary); }
+.stat-label { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; margin-top: 8px; font-weight: 600; letter-spacing: 0.5px; }
+
+/* Form Card */
+.details-card {
+  background: var(--white);
+  padding: 3rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1.2rem;
+}
+
+.section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin: 0; }
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid #f5f7f6;
+}
+.info-row:last-child { border-bottom: none; }
+
+.label { font-weight: 600; color: var(--text-muted); font-size: 1.05rem; }
+.value { color: var(--text-main); font-weight: 500; font-size: 1.05rem; }
+
+/* Inputs */
+.form-group { margin-bottom: 1.8rem; }
+.form-label { display: block; font-weight: 600; margin-bottom: 0.6rem; color: var(--text-main); }
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+.form-input:focus { 
+  outline: none; 
+  border-color: var(--primary); 
+  box-shadow: 0 0 0 4px var(--primary-light); 
+}
+
+.confirm-box {
+  background: var(--warning-bg);
+  border: 1px solid #ffeeba;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+/* Botones */
+.actions { display: flex; gap: 1.2rem; margin-top: 2.5rem; }
+
+.btn { padding: 10px 24px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+.btn-outline { background: white; border: 1px solid #ddd; color: var(--text-main); }
+.btn-outline:hover { background: #f8f9fa; border-color: #ccc; }
+
+.btn-danger { background: white; border: 1px solid var(--danger); color: var(--danger); }
+.btn-danger:hover { background: #fff5f5; }
+
+.back-btn { 
+  margin-bottom: 1rem; 
+  cursor: pointer; 
+  color: var(--text-muted); 
+  font-weight: 600; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  font-size: 1rem;
+}
+.back-btn:hover { color: var(--primary); }
+
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+========================================= */
+
+/* 💻 LAPTOPS MEDIANAS (< 1300px) */
+@media screen and (max-width: 1300px) {
+  .dashboard-container2 {
+    width: 95%;
+    min-width: 900px; /* Reducimos el ancho mínimo */
+    grid-template-columns: 300px 1fr; /* Ajustamos columna lateral un poco */
+    gap: 20px;
+  }
+}
+
+/* 📟 TABLETS (< 1024px) - CAMBIO DE ESTRUCTURA */
+@media screen and (max-width: 1024px) {
+  .profile-wrapper {
+    padding: 20px;
+  }
+
+  .dashboard-container2 {
+    width: 100%;
+    min-width: 95%; /* Eliminamos ancho fijo */
+    grid-template-columns: 1fr; /* 🔥 Todo a 1 sola columna */
+    gap: 25px;
+  }
+
+  /* La tarjeta de perfil ya no es sticky en tablet, se queda arriba */
+  .profile-card {
+    position: static; 
+    max-width: 500px; /* Limitamos ancho para que no se vea gigante */
+    margin: 0 auto;   /* Centrado */
+    width: 100%;
+  }
+
+  .stats-grid {
+    gap: 1rem;
+  }
+}
+
+/* 📱 MÓVILES (< 600px) */
+@media screen and (max-width: 600px) {
+  .profile-wrapper {
+    padding: 10px;
+  }
+  
+  .dashboard-container2 {
+    min-width: auto; /* Reset total */
+  }
+
+  .details-card {
+    padding: 1.5rem; /* Menos padding interno */
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Stats en 1 sola columna o 2 pequeñas */
+  .stats-grid {
+    grid-template-columns: 1fr; /* Una encima de otra */
+  }
+
+  .actions {
+    flex-direction: column; /* Botones uno debajo del otro */
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

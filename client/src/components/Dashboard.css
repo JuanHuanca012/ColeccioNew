@@ -1,0 +1,486 @@
+/* ============================
+   Variables CSS – Minimalista Blanco + Verde
+============================ */
+:root {
+  --primary-color: #2e8b57; /* Verde suave */
+  --primary-hover: #257147; /* Verde más oscuro */
+  --danger-color: #e74c3c; /* Rojo para eliminar */
+  --danger-hover: #c0392b;
+  --text-dark: #2c3e50;
+  --text-light: #6f7b87;
+  --bg-light: #ffffff;
+  --bg-soft: #f5f7f6;
+  --radius-main: 14px;
+  --radius-item: 10px;
+  --shadow-soft: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+/* ============================
+   CONTENEDOR GENERAL
+============================ */
+.dashboard-container {
+  width: 90%;
+  max-width: 1800px; /* Permite que se expanda bien en monitores grandes */
+  min-width: 1250px; /* Tu preferencia para PC: mantiene el ancho robusto */
+  margin: 50px auto;
+  padding: 40px;
+  background-color: var(--bg-soft);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-soft);
+  font-family: "Poppins", sans-serif;
+  color: var(--text-dark);
+  
+  /* Transición suave al cambiar de tamaño de ventana */
+  transition: min-width 0.3s ease, padding 0.3s ease; 
+}
+
+/* ============================
+   HEADER
+============================ */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 25px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.dashboard-username {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.logout-btn, .Profile-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-item);
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.logout-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: var(--danger-hover);
+  transform: translateY(-2px);
+}
+
+.Profile-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.Profile-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   TEXTOS PRINCIPALES
+============================ */
+.dashboard-welcome {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+
+.dashboard-description {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 30px;
+}
+
+/* ============================
+   FORMULARIO CREAR CATÁLOGO
+============================ */
+.form-container {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: var(--bg-light);
+  border-radius: var(--radius-item);
+  box-shadow: var(--shadow-soft);
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-input,
+.form-textarea {
+  color: var(--text-dark);
+  padding: 14px;
+  border-radius: var(--radius-item);
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  transition: 0.2s ease;
+  font-size: 1rem;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(46,139,87,0.25);
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-button {
+  margin: auto;
+  padding: 14px 25px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: var(--radius-item);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 120px;
+  font-size: 1rem;
+  transition: 0.25s ease;
+}
+
+.form-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.form-error {
+  color: var(--danger-color);
+  font-size: 0.95rem;
+}
+
+/* ============================
+   LISTA DE CATÁLOGOS
+============================ */
+.catalog-section {
+  margin-top: 50px;
+}
+
+.catalog-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.catalogo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 0;
+  list-style: none;
+}
+
+.catalogo-item {
+  padding: 22px;
+  background-color: var(--bg-light);
+  border-radius: var(--radius-item);
+  border: 1px solid #efefef;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.catalogo-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.catalogo-content {
+  flex: 1;
+}
+
+.catalogo-nombre {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  display: block;
+}
+
+.catalogo-descripcion {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.delete-catalog-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  color: #888;
+}
+
+.delete-catalog-btn:hover {
+  background-color: #ffeaea;
+  color: var(--danger-color);
+}
+
+.no-catalogos {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--bg-light);
+  border-radius: var(--radius-item);
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* ============================
+   USER INFO
+============================ */
+.user-info-section {
+  margin-top: 40px;
+  padding: 25px;
+  background-color: var(--bg-light);
+  border-radius: var(--radius-item);
+  box-shadow: var(--shadow-soft);
+}
+
+.loading-text {
+  text-align: center;
+  padding: 15px;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ============================
+   MODAL (ELIMINAR)
+============================ */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-box {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius-main);
+  width: 450px;
+  max-width: 90%;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-box h3 {
+  margin-top: 0;
+  color: var(--danger-color);
+  font-size: 1.5rem;
+}
+
+.modal-warning {
+  color: var(--danger-color);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn-cancel, .btn-confirm-delete {
+  padding: 12px 20px;
+  border-radius: var(--radius-item);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-cancel {
+  background: #e0e0e0;
+  color: var(--text-dark);
+}
+.btn-cancel:hover { background: #d0d0d0; }
+
+.btn-confirm-delete {
+  background: var(--danger-color);
+  color: white;
+}
+.btn-confirm-delete:hover { background: var(--danger-hover); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE DESIGN)
+   ========================================= */
+
+/* --- 🖥️ PANTALLAS GIGANTES (PC > 1400px) --- */
+@media screen and (min-width: 1401px) {
+  .dashboard-container {
+    padding: 50px 60px;
+  }
+
+  .dashboard-title {
+    font-size: 2.8rem;
+  }
+
+  .dashboard-welcome {
+    font-size: 2rem;
+  }
+
+  .catalogo-list {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 35px;
+  }
+}
+
+/* --- 💻 LAPTOPS MEDIANAS (hasta 1300px) --- 
+   Aquí empezamos a reducir el min-width para que no se salga de la pantalla */
+@media screen and (max-width: 1300px) {
+  .dashboard-container {
+    width: 95%;
+    min-width: 900px; /* Anulamos el 1250px base para que entre en laptop */
+    padding: 30px;
+  }
+}
+
+/* --- 📟 TABLETS HORIZONTALES (hasta 1024px) --- */
+@media screen and (max-width: 1024px) {
+  .dashboard-container {
+    width: 95%;
+    min-width: 700px; /* Bajamos más el ancho mínimo */
+    padding: 25px;
+    margin: 30px auto;
+  }
+
+  .dashboard-title {
+    font-size: 1.8rem;
+  }
+
+  .catalogo-list {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* --- 📱 TABLETS VERTICALES (hasta 768px) --- */
+@media screen and (max-width: 768px) {
+  .dashboard-container {
+    width: 95%;
+    min-width: 95%; /* Ya casi no usamos ancho fijo */
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .dashboard-username {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-grid {
+    flex-direction: column;
+  }
+
+  .form-button {
+    width: 100%;
+  }
+}
+
+/* --- 📲 CELULARES (hasta 480px) --- */
+@media screen and (max-width: 480px) {
+  .dashboard-container {
+    width: 100%;
+    min-width: auto; /* CRUCIAL: Ancho automático para que no haya scroll horizontal */
+    margin: 0;
+    border-radius: 0;
+    padding: 15px;
+    box-shadow: none;
+  }
+
+  .dashboard-title {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .dashboard-header {
+    align-items: center;
+    border-bottom: 1px solid var(--primary-color);
+  }
+
+  .dashboard-username {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logout-btn, .Profile-btn {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .catalogo-list {
+    grid-template-columns: 1fr;
+  }
+
+  .delete-catalog-btn {
+    padding: 8px 12px;
+  }
+}
