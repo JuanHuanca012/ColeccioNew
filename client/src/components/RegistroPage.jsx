@@ -21,7 +21,7 @@ export default function RegistroPage() {
     try {
       // Llamamos a nuestra API de registro (POST /api/registro)
       const response = await axios.post(
-        'http://localhost:5000/api/registro',
+        'https://coleccionew.onrender.com/api/registro',
         { 
           nombre_usuario: nombreUsuario,
           email: email, 
