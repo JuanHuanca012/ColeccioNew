@@ -35,16 +35,25 @@ const pool = new Pool(
       }
 );
 
-// --- Función de Autodiagnóstico ---
+// --- Función de Autodiagnóstico MEJORADA ---
 async function testDbConnection() {
   try {
+    // Verificación visual en los logs
+    if (!process.env.DATABASE_URL) {
+       console.log("⚠️ ATENCIÓN: No se detectó la variable DATABASE_URL en el entorno.");
+       console.log("El servidor intentará usar la configuración local (localhost), lo cual fallará en Render.");
+    } else {
+       console.log("✅ Variable DATABASE_URL detectada correctamente.");
+    }
+
     const client = await pool.connect();
     console.log("✅ ¡Conexión a la base de datos exitosa!");
     client.release();
     return true;
   } catch (err) {
-    console.error("❌ ERROR FATAL: No se pudo conectar a la base de datos.");
-    console.error("Error detallado:", err.message);
+    console.error("❌ ERROR FATAL DE CONEXIÓN:");
+    // Imprimimos el error completo para verlo en los logs de Render
+    console.error(err); 
     return false;
   }
 }
