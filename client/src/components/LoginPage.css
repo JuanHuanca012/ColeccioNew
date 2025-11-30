@@ -1,6 +1,3 @@
-/* ============================
-   VARIABLES
-============================ */
 :root {
   --bg: #eef3f1;
   --card-bg: #ffffff;
@@ -15,12 +12,11 @@
 
   --error: #b91c1c;
   
-  /* Sombra más suave para móviles */
   --shadow-card: 0 20px 38px rgba(0,0,0,0.11);
 }
 
 /* ============================
-   RESET
+   RESET & GLOBAL
 ============================ */
 * {
   box-sizing: border-box;
@@ -37,33 +33,39 @@ body {
    CONTENEDOR RAÍZ
 ============================ */
 .login-page-root {
-  /* Usamos dvh (Dynamic Viewport Height) para que ignore las barras del navegador en móvil */
+  /* Usamos min-height para cubrir toda la pantalla */
   min-height: 100vh;
   min-height: 100dvh; 
+  width: 100%;
+  
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px; /* Un poco menos de padding para aprovechar espacio */
+  
+  /* Agregamos padding para asegurar que no toque los bordes en pantallas muy pequeñas */
+  padding: 20px; 
+  overflow-x: hidden; /* Prevenir scroll horizontal accidental */
 }
 
 /* ============================
-   ESCENA 3D
+   ESCENA 3D (CONTENEDOR CARD)
 ============================ */
 .scene {
-  width: 440px;
-  max-width: 100%; /* Asegura que no se salga en pantallas muy angostas */
+  /* CORRECCIÓN PRINCIPAL: 
+     En lugar de width: 440px fijo, usamos max-width.
+     Esto permite que se encoja en móviles. */
+  width: 100%; 
+  max-width: 440px;
   
-  /* TRUCO CLAVE: 
-     En PC será de 600px.
-     En Móvil será máximo el 85% de la altura de la pantalla.
-     Esto evita que el teclado tape los inputs al escribir. */
+  /* Altura fija para PC, pero flexible en móvil */
   height: 600px; 
-  max-height: 85dvh; 
+  max-height: 85vh; 
 
   perspective: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 /* ============================
@@ -88,7 +90,9 @@ body {
   background: var(--card-bg);
   backface-visibility: hidden;
   border-radius: 20px;
-  padding: 40px 30px; /* Padding responsive */
+  
+  /* Espaciado interno cómodo */
+  padding: 40px 30px; 
 
   display: flex;
   flex-direction: column;
@@ -98,8 +102,14 @@ body {
 
   box-shadow: var(--shadow-card);
   
-  /* Asegura que si el contenido es mucho, aparezca scroll interno y no se corte */
+  /* Clave para pantallas cortas o teclado virtual: Scroll si es necesario */
   overflow-y: auto; 
+  
+  /* Ocultar scrollbar visualmente pero permitir scroll */
+  scrollbar-width: none; 
+}
+.card-face::-webkit-scrollbar {
+  display: none;
 }
 
 .card-back {
@@ -107,11 +117,12 @@ body {
 }
 
 /* ============================
-   TITULOS
+   TIPOGRAFÍA
 ============================ */
 .card-face h2 {
   font-size: 1.8rem;
   margin-bottom: 8px;
+  margin-top: 0;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -124,6 +135,12 @@ body {
   margin: 0 0 25px;
   color: var(--muted);
   font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.toggle-text {
+  margin-top: 20px !important;
+  margin-bottom: 5px !important;
 }
 
 /* ============================
@@ -131,37 +148,42 @@ body {
 ============================ */
 .form {
   width: 100%;
-  max-width: 330px;
+  /* Evitamos que el form sea más ancho que la tarjeta */
+  max-width: 100%; 
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Un poco más de aire */
+  gap: 15px; 
 }
 
 /* INPUT */
 .form input {
-  padding: 14px; /* Zona táctil más grande para dedos */
+  padding: 14px; 
   border-radius: 12px;
   border: 2px solid var(--input-border);
   background: #f7fffa;
   transition: 0.25s;
-  font-size: 1rem; /* 16px evita que iPhone haga zoom al escribir */
+  font-size: 16px; /* 16px exactos evita zoom automático en iPhone */
   color: var(--text);
   width: 100%;
+  outline: none;
 }
 
 .form input:focus {
   border-color: var(--input-focus);
   background: white;
   box-shadow: 0 0 0 3px rgba(149,213,178,0.35);
-  outline: none;
+}
+
+.form input::placeholder {
+  color: #a0a0a0;
 }
 
 /* ============================
-   BOTÓN PRINCIPAL
+   BOTONES Y LINKS
 ============================ */
 .btn {
   width: 100%;
-  padding: 14px; /* Botón más alto para fácil toque */
+  padding: 14px;
   margin-top: 10px;
   background: var(--green);
   color: white;
@@ -182,30 +204,23 @@ body {
 .btn[disabled] {
   opacity: 0.6;
   cursor: not-allowed;
-  background: #9aaeb5; /* Color grisáceo explícito */
+  background: #9aaeb5; 
 }
 
-/* ============================
-   LINK CAMBIO LOGIN / REGISTER
-============================ */
 .toggle-link {
   color: var(--green);
   font-weight: 600;
   cursor: pointer;
-  margin-top: 15px;
-  font-size: 0.95rem;
-  padding: 5px; /* Zona táctil extra */
+  padding: 5px; 
+  display: inline-block;
 }
 
 .toggle-link:hover {
   text-decoration: underline;
 }
 
-/* ============================
-   ERROR
-============================ */
 .error-message {
-  margin-top: 5px;
+  margin-top: 10px;
   color: var(--error);
   font-weight: 600;
   font-size: 0.9rem;
@@ -213,73 +228,72 @@ body {
 }
 
 /* ============================
-   MEDIA QUERIES (TABLET Y MÓVIL)
+   MEDIA QUERIES (MÓVIL & TABLET)
 ============================ */
 
-/* TABLET (Hasta 768px) */
+/* TABLET / PANTALLAS PEQUEÑAS (Hasta 768px) */
 @media (max-width: 768px) {
   .scene {
-    height: 550px; /* Un poco más compacto que en PC */
-  }
-  
-  .card-face {
-    padding: 30px 25px;
+    height: 550px; 
   }
 }
 
 /* MÓVIL (Hasta 480px) */
 @media (max-width: 480px) {
   .login-page-root {
-    align-items: flex-start; /* Alineamos arriba */
-    padding-top: 40px; /* Le damos espacio arriba */
+    /* Alineamos al centro para que se vea bien centrado */
+    padding: 15px; 
   }
 
   .scene {
-    /* En móvil forzamos una altura basada en el contenido visual 
-       pero limitada por la pantalla */
-    height: 500px; 
-    max-height: 80dvh; 
+    /* Permitir que la tarjeta ocupe casi todo el ancho disponible */
+    width: 100%; 
+    
+    /* En móviles pequeños, ajustamos la altura para que entre todo */
+    height: auto;
+    min-height: 500px;
+    
+    /* Importante: quitar max-height fijo estricto si el contenido es mucho, 
+       pero mantenerlo controlado para la estética */
+    max-height: 90vh; 
   }
 
   .card-face {
-    padding: 20px;
-    border-radius: 16px; /* Borde un poco menos redondo para ahorrar espacio */
+    padding: 25px 20px;
+    border-radius: 16px;
   }
 
   .card-face h2 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
-
+  
   .form {
     gap: 12px;
   }
-
+  
   .form input {
     padding: 12px;
   }
-  
-  .btn {
-    padding: 12px;
-  }
 }
 
-/* MÓVIL PAISAJE (Cuando giran el celular) */
-@media (max-height: 500px) {
+/* MÓVIL PAISAJE (LANDSCAPE) */
+@media (max-height: 500px) and (orientation: landscape) {
   .login-page-root {
     padding: 10px;
     height: auto;
-    min-height: 100dvh;
+    align-items: flex-start;
   }
   
   .scene {
-    height: 350px; /* Tarjeta muy bajita para paisaje */
+    height: 400px; 
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
   
-  .form {
-    gap: 8px;
-  }
-  
-  .btn {
-    margin-top: 5px;
+  .card-face {
+    padding: 15px;
+    justify-content: flex-start; /* Alinear arriba para poder hacer scroll */
   }
 }
+/* ============================
+   FIN CSS
