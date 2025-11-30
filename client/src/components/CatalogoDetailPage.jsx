@@ -30,7 +30,7 @@ export default function CatalogoDetailPage() {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/objetos/${idCatalogo}`
+        `https://coleccionew.onrender.com/api/objetos/${idCatalogo}`
       );
       setObjetos(res.data);
     } catch (error) {
@@ -110,7 +110,7 @@ export default function CatalogoDetailPage() {
         formDataFoto.append("foto", fotoArchivo);
 
         const resFoto = await axios.post(
-          "http://localhost:5000/api/upload",
+          "https://coleccionew.onrender.com/api/upload",
           formDataFoto,
           {
             headers: { "Content-Type": "multipart/form-data" },
@@ -137,11 +137,11 @@ export default function CatalogoDetailPage() {
 
       if (editingObjeto) {
         await axios.put(
-          `http://localhost:5000/api/objetos/${editingObjeto.id_objeto}`,
+          `https://coleccionew.onrender.com/api/objetos/${editingObjeto.id_objeto}`,
           objetoData
         );
       } else {
-        await axios.post("http://localhost:5000/api/objetos", objetoData);
+        await axios.post("https://coleccionew.onrender.com/api/objetos", objetoData);
       }
 
       handleCancelEdit();
@@ -164,7 +164,7 @@ export default function CatalogoDetailPage() {
       return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/objetos/${idObjeto}`);
+      await axios.delete(`https://coleccionew.onrender.com/api/objetos/${idObjeto}`);
       fetchObjetos();
     } catch (error) {
       console.error("Error al eliminar objeto:", error);

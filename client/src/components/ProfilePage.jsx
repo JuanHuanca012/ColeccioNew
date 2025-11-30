@@ -68,7 +68,7 @@ export default function ProfilePage() {
 
     setLoading(true);
     try {
-      const response = await axios.put(`http://localhost:5000/api/usuarios/${user.id_usuario}`, formData);
+      const response = await axios.put(`https://coleccionew.onrender.com/api/usuarios/${user.id_usuario}`, formData);
       
       const updatedUser = { ...user, ...response.data.usuario };
       

@@ -20,7 +20,7 @@ export default function DashboardPage() {
   const fetchCatalogos = useCallback(async (idColeccion) => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/catalogos/${idColeccion}`);
+      const response = await axios.get(`https://coleccionew.onrender.com/api/catalogos/${idColeccion}`);
       setCatalogos(response.data || []);
     } catch (error) {
       console.error("Error al obtener catálogos:", error);
@@ -73,7 +73,7 @@ export default function DashboardPage() {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/catalogos', {
+      await axios.post('https://coleccionew.onrender.com/api/catalogos', {
         nombre: nombreTrim,
         descripcion: '',
         id_coleccion_fk: usuario.id_coleccion
@@ -123,7 +123,7 @@ export default function DashboardPage() {
 
     try {
       // En axios.delete, el body va dentro de la propiedad "data"
-      await axios.delete(`http://localhost:5000/api/catalogos/${id}`, {
+      await axios.delete(`https://coleccionew.onrender.com/api/catalogos/${id}`, {
         data: {
           id_usuario: usuario.id_usuario,
           password: deletePassword

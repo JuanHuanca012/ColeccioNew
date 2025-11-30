@@ -32,7 +32,7 @@ export default function LoginPage() {
     setErrorMessage("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", {
+      const res = await axios.post("https://coleccionew.onrender.com/api/login", {
         email: formData.email,
         password: formData.password,
       });
@@ -56,7 +56,7 @@ export default function LoginPage() {
     setErrorMessage("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/registro", {
+      const res = await axios.post("https://coleccionew.onrender.com/api/registro", {
         nombre_usuario: formData.nombre,
         email: formData.email,
         password: formData.password,
